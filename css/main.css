@@ -1,0 +1,15 @@
+.centerdiv {
+     min-height: 100%;
+     min-height: 100vh;
+     text-align: center;
+     display: flex;
+     align-items: center;
+}
+
+.bg-div {
+     background-image: url(/imgs/background.avif);
+     background-position: center;
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+}

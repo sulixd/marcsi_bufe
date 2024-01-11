@@ -1,0 +1,13 @@
+{
+  "name": "marcsi-bufe-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "twdev": "npx tailwindcss -i ./css/app.css -o ./css/dist.css --watch",
+    "twbuild": "npx tailwindcss -i ./app.css -o ./css/dist.css"
+  },
+  "author": "",
+  "license": "ISC"
+}
