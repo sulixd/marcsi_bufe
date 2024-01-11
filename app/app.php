@@ -6,6 +6,7 @@ foreach([
      'flame_render_engine/app',
      'db',
      'auth',
+     'services/error',
      'services/google',
      'services/order',
      'functions',
@@ -19,12 +20,13 @@ class App {
      public readonly Auth $auth;
      public readonly GoogleOAuth $oauth;
      public readonly OrderService $orderService;
+     public readonly ErrorService $errorService;
 
      public function __construct() {
           $this->session();
           DB::createConnection(require __DIR__ . '/../config/db.php');
           $this->db = new DB;
-          $this->baseUrl = '';
+          $this->baseUrl = '/';
           $this->render = new FlameRender();
           if($_SERVER['REQUEST_METHOD'] == 'POST') {
                $this->request = $_POST;
@@ -37,7 +39,9 @@ class App {
                $gconf['redirect_uri'],
                $gconf['version'],
           );
-          $this->orderService = new OrderService($this->db, $this->auth);
+
+          $this->errorService = new ErrorService($this);
+          $this->orderService = new OrderService($this, $this->auth);
      }
 
      public function session(): void {

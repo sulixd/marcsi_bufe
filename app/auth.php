@@ -30,4 +30,11 @@ class Auth {
      public function isLoggedIn(): bool {
           return $this->userId != 0 && $this->user != [];
      }
+
+     public function middleware() {
+          if($this->userId == NULL || $this->userId == 0) {
+               header('Location: ' . $this->app->baseUrl . 'auth/login.php');
+               exit;
+          }
+     }
 }
