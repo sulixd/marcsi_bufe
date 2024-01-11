@@ -4,9 +4,7 @@
       Marcsi büfé
     </a>
     <div class="flex md:order-2">
-      <a href="#contact">
-        @render($app, 'button-link', ['title' => renderCb($app, 'icons/auth.svg')], ['href' => $app->baseUrl . '/auth/login.php'])
-      </a>
+      @render($app, 'button-link', ['title' => renderCb($app, 'icons/auth.svg')], ['href' => $app->baseUrl . '/auth/login.php'])
       <button onclick="document.querySelector('#menu-dropdown').classList.toggle('hidden')" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-700 rounded-lg md:hidden bg-gray-100 hover:bg-gray-50 focus:bg-gray-200 mx-2">
         <span class="sr-only">Menü kinyitása</span>
         {{ renderTitle(renderCb($app, 'icons/menu.svg')) }}
