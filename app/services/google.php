@@ -21,7 +21,7 @@ class GoogleOAuth {
           return 'https://accounts.google.com/o/oauth2/auth?' . http_build_query($params);
      }
 
-     public function verify(string $code): array {
+     public function verify(string $code): string|false {
           $params = [
                'code' => $code,
                'client_id' => $this->client_id,
@@ -29,14 +29,25 @@ class GoogleOAuth {
                'redirect_uri' => $this->redirect_uri,
                'grant_type' => 'authorization_code'
           ];
+
           $ch = curl_init();
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
           curl_setopt($ch, CURLOPT_URL, 'https://accounts.google.com/o/oauth2/token');
           curl_setopt($ch, CURLOPT_POST, true);
           curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
           $response = curl_exec($ch);
           curl_close($ch);
-          return json_decode($response, true);
+          try {
+               $data = json_decode($response, true);
+          } catch(Exception) {
+               return false;
+          }
+          $id_token = $data['id_token'];
+          $user = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $id_token)[1]))), true);
+          return $user['email'];
      }
 
 }

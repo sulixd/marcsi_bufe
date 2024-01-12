@@ -17,6 +17,7 @@ class Auth {
           $data = $this->app->db->_select('select * from users where id = ? limit 1', [$this->userId], [0]);
           if(!isset($data['error'])) {
                $this->user = $data;
+               $_SESSION['Auth.UserId'] = $data['id'];
           } else $this->user = [];
      }
 
@@ -24,6 +25,7 @@ class Auth {
           $data = $this->app->db->_select('select * from users where email = ? limit 1', [$email], [0]);
           if(!isset($data['error'])) {
                $this->user = $data;
+               $_SESSION['Auth.UserId'] = $data['id'];
           } else $this->user = [];
      }
 
