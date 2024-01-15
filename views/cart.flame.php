@@ -21,7 +21,7 @@
           </div>
      </div>
      @else:
-     <div class="bg-gray-100 text-center py-5 px-5 border-2">
+     <div class="bg-gray-100 text-center py-5 px-5 border-2 md:w-1/3 md:mx-auto">
           <h2 class="fontPTSerif mb-2 text-2xl">A kosara üres</h2>
           @render($app, 'button-link', ['title' => 'Vásárlás'], ['href' => $app->baseUrl . 'products.php'])
      </div>

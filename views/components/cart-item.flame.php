@@ -5,7 +5,8 @@
           <p class="text-gray-700">{{ $item['price'] }}Ft</p>
      </div>
      <div class="ml-auto">
-          <form method="post" action="{{ $app->baseUrl }}cart_delete.php?id={{ $item['id'] }}">
+          <form method="get" action="{{ $app->baseUrl }}cart_delete.php">
+              <input name="index" type="hidden" value="{{ $index }}">
           <button class="px-4 py-2 bg-red-400 text-white rounded">
                Törlés
           </button>
