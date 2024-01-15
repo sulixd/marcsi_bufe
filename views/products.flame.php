@@ -5,7 +5,7 @@
     <h1 class="fontPTSerif text-3xl mb-4">Termékek</h1>
     <div class="md:grid md:grid-cols-2 lg:grid-cols-3 gap-3 my-3 md:my-0">
         @foreach($products as $product)
-            <div class="bg-gray-100 border-2 border-gray-200">
+            <div class="bg-gray-100 border-2 border-gray-200 flex flex-1 flex-col justify-between">
                 <img class="w-full" src="{{ $product['image'] }}" alt="{{ $product['name'] }}">
                 <div class="px-5 py-2 pb-3 mt-auto">
                     <h3 class="text-xl fontPTSerif">{{ $product['name'] }}</h3>

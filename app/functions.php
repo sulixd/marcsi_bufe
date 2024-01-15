@@ -1,7 +1,7 @@
 <?php
 
 function render(App $app, string $name, array $props = [], array $attrs = []) {
-     return $app->render->view('components/' . $name, [...$props, 'attrs' => $attrs]);
+     return $app->render->view('components/' . $name, [...$props, 'attrs' => $attrs, 'app' => $app]);
 }
 
 function renderCb(App $app, string $name, array $props = [], array $attrs = []) {

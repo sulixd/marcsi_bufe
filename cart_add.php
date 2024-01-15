@@ -9,6 +9,5 @@ if(isset($_GET['id'])) {
         'id' => intval($_GET['id'])
     ]);
     $_SESSION['Cart.Products'][] = intval($_GET['id']);
-    return "OK";
-}
-return "FAILED";
+    echo "OK";
+} else echo "FAILED";

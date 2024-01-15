@@ -81,7 +81,7 @@ class DB {
             }
     
             $sql_str = "SELECT $select FROM $from $w $orsel $like_str $order $limit $offset";
-            
+
             $sql = self::$PDO->prepare($sql_str);
 
             if($where_array != NULL){

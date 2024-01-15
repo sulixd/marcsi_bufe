@@ -4,7 +4,7 @@
       Marcsi büfé
     </a>
     <div class="flex md:order-2">
-      @render($app, 'button-link', ['title' => renderCb($app, 'icons/auth.svg')], ['href' => $app->baseUrl . 'auth/login.php'])
+      @render($app, 'button-link', ['title' => renderCb($app, $app->auth->isLoggedIn() ? 'icons/cart.svg' : 'icons/auth.svg')], ['href' => $app->auth->isLoggedIn() ? $app->baseUrl . 'cart.php' : $app->baseUrl . 'auth/login.php'])
       <button onclick="document.querySelector('#menu-dropdown').classList.toggle('hidden')" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-700 rounded-lg md:hidden bg-gray-100 hover:bg-gray-50 focus:bg-gray-200 mx-2">
         <span class="sr-only">Menü kinyitása</span>
         {{ render($app, 'icons/menu.svg') }}
@@ -16,7 +16,7 @@
           <a href="{{ $app->baseUrl }}products.php" class="block py-2 pl-3 pr-4 text-gray-400 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-600 md:p-0">Termékek</a>
         </li>
         <li>
-          <a href="{{ $app->baseUrl }}cart.php" class="block py-2 pl-3 pr-4 text-gray-400 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-600 md:p-0">Kosár</a>
+          <a href="{{ $app->baseUrl }}auth/logout.php" class="block py-2 pl-3 pr-4 text-gray-400 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-600 md:p-0">Kijelentkezés</a>
         </li>
       </ul>
     </div>

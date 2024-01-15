@@ -4,6 +4,10 @@
 <div class="text-center">
     <h1 class="fontPTSerif text-3xl">Marcsi büfé</h1>
     <p class="text-gray-500 mt-2 mb-5">Rendelj online vagy valamxi random szöveg</p>
-    @render($app, 'button-link', ['title' => 'Bejelentkezés'], ['href' => $app->baseUrl . 'auth/login.php'])
+    @if(!$app->auth->isLoggedIn())
+        @render($app, 'button-link', ['title' => 'Bejelentkezés'], ['href' => $app->baseUrl . 'auth/login.php'])
+    @else:
+        @render($app, 'button-link', ['title' => 'Vásárlás'], ['href' => $app->baseUrl . 'products.php'])
+    @endif
 </div>
 @endyield:main;

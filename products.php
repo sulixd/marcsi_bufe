@@ -2,7 +2,7 @@
 
 $app = require_once __DIR__ . '/app/app.php';
 
-// $app->auth->middleware();
+$app->auth->middleware();
 
 $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
