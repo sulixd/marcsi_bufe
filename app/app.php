@@ -48,7 +48,6 @@ class App {
           session_name('Marcsi_SID');
           session_start();
           session_regenerate_id(true);
-          $_SESSION['Auth.UserId'] = 1; // FOR DEMO
      }
 
 }

@@ -20,13 +20,16 @@ if(!empty($productIds)) {
      $query .= ')';
 
      $query_result = $app->db->_select($query, $productIds);
+
      if(isset($query_result['error'])) $app->errorService->ServerError();
 
-     foreach($productIds as $key => $prodId) {
-          $prod = array_filter($query_result, fn($r) => $r['id'] == $prodId);
-          if(isset($prod[0])) {
-               $products[] = $prod[0];
-               $price += $prod[0]['price'];
+     foreach($productIds as $prodId) {
+          foreach($query_result as $res) {
+               if($res['id'] == $prodId) {
+                    $products[] = $res;
+                    $price += $res['price'];
+                    break;
+               }
           }
      }
 }

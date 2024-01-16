@@ -47,7 +47,7 @@ class GoogleOAuth {
           }
           $id_token = $data['id_token'];
           $user = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $id_token)[1]))), true);
-          return $user['email'];
+          return $user['email'] ?? false;
      }
 
 }
