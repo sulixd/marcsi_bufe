@@ -3,6 +3,8 @@
 /** @var App $app */
 $app = require_once __DIR__ . '/app/app.php';
 
+$app->auth->middleware();
+
 if(!isset($_SESSION['Cart.Products'])) $_SESSION['Cart.Products'] = [];
 
 if(isset($_GET['id'])) {

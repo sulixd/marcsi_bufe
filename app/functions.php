@@ -20,3 +20,10 @@ function renderTitle(string|callable $title) {
      if(is_string($title)) return $title;
      return $title();
 }
+
+function yieldProducts(array $ids) {
+     foreach($ids as $id) {
+          $data = DB::_select('select * from products where id = ? limit 1', [$id], [0]);
+          yield $data;
+     }
+}

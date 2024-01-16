@@ -18,4 +18,10 @@ class ErrorService {
           $this->app->render->view('errors/template', ['title' => 'Hitelesítési hiba', 'app' => $this->app]);
           exit;
      }
+
+     public function BadRequest() {
+          http_response_code(400);
+          $this->app->render->view('errors/template', ['title' => 'Rossz kérés', 'app' => $this->app]);
+          exit;
+     }
 }

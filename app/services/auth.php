@@ -33,9 +33,12 @@ class Auth {
           return $this->userId != 0 && $this->user != [];
      }
 
-     public function middleware() {
+     public function middleware(?callable $cb = NULL) {
           if($this->userId == NULL || $this->userId == 0) {
                header('Location: ' . $this->app->baseUrl . 'auth/login.php');
+               exit;
+          } else if(is_callable($cb) && !$cb($this->user)) {
+               header('Location: ' . $this->app->baseUrl);
                exit;
           }
      }

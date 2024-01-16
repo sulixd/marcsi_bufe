@@ -15,11 +15,17 @@
         <li>
           <a href="{{ $app->baseUrl }}products.php" class="block py-2 pl-3 pr-4 text-gray-400 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-600 md:p-0">Termékek</a>
         </li>
-        @if($app->auth->isLoggedIn())
+        @if($app->auth->isLoggedIn() && $app->auth->user['is_admin'])
+        <li>
+          <a href="{{ $app->baseUrl }}admin" class="block py-2 pl-3 pr-4 text-gray-400 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-600 md:p-0">Admin</a>
+        </li>
+        @endif
+        <!-- -->
+        {{* if($app->auth->isLoggedIn()): }}
         <li>
           <a href="{{ $app->baseUrl }}auth/logout.php" class="block py-2 pl-3 pr-4 text-gray-400 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-600 md:p-0">Kijelentkezés</a>
         </li>
-        @endif
+        {{* endif }}
       </ul>
     </div>
   </div>
