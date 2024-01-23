@@ -1,6 +1,6 @@
 <nav class="bg-white w-full z-20 top-0 left-0 border-b fixed">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="/#" class="flex items-center">
+    <a href="{{ $app->baseUrl }}" class="flex items-center">
       Marcsi büfé
     </a>
     <div class="flex md:order-2">
